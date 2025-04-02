@@ -1,7 +1,5 @@
 ############# Functions to run and validate NMF clusters 
 
-############# Functions to run and validate NMF clusters 
-
 # Perform NMF and calculate reconstruction error
 run_nmf <- function(data, rank, method = "brunet", nrun = 10) {
   nmf_result <- nmf(data, rank, method = method, nrun = nrun)

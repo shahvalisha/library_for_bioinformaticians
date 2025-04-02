@@ -1,9 +1,7 @@
-
-rm(list = ls())
 ############# Functions to run and validate NMF clusters 
 
 # Perform NMF and calculate reconstruction error
-run_nmf <- function(data, rank, method = "brunet", nrun = 1) {
+run_nmf <- function(data, rank, method = "brunet", nrun = 10) {
   nmf_result <- nmf(data, rank, method = method, nrun = nrun)
   basis_matrix <- basis(nmf_result)  # H matrix
   coefficient_matrix <- coef(nmf_result)  # W matrix
@@ -47,7 +45,7 @@ library(cluster)
 library(clusterProfiler)
 library(NMF)
 
-corrected_tpm <- read.delim("/Users/valishashah/Partners HealthCare Dropbox/Valisha Shah/R2000/Locked_shared_dfs/RNA/BatchCorrected/corrected_log_denovobatch_tpm_11_01_24-VS_withneg.tsv")
+corrected_tpm <- read.delim("/path/to/corrected_log_denovobatch_tpm_withneg.tsv")
 
 rownames(corrected_tpm) <- corrected_tpm$gene_id
 numerical_tpm <- corrected_tpm %>%
@@ -120,7 +118,7 @@ print(nmf_time_taken)
 print(consensus_time_taken)
 print(frobenius_time_taken)
 
-save.image("R2000_NMF_20241109.RData")
+save.image("NMF.RData")
 
 
 
